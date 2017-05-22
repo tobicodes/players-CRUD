@@ -1,8 +1,11 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_modus import Modus
+from forms import Addnewplayer, Editplayer, Addnewtrait, Edittrait
+import os
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 modus = Modus(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/Players-db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -32,22 +35,35 @@ class Player (db.Model):
 
 @app.route("/players", methods = ["GET", "POST"])
 def index():
-	if request.method == "POST":
+	form = Addnewplayer(request.form)
+	if request.method == "POST" and form.validate():
 		player = Player(first_name = request.form['first_name'],
 						last_name = request.form['last_name'],
 						position = request.form['position'])
 		db.session.add(player)
 		db.session.commit()
 
-		return redirect(url_for('index'))
+		return redirect(url_for('index', form=form))
 
 	all_players =Player.query.all()
 
 	return render_template("index.html", all_players=all_players)
 
+
+# form = SignupForm(request.form)
+# 	if request.method =="POST" and form.validate():
+# 		flash("Thank you for signing up!")
+# 		return redirect(url_for('welcome'))
+# 	return render_template('signup.html', form = form)
+
+
+
+
+
 @app.route("/players/new")
 def new():
-	return render_template('new.html')
+	form = Addnewplayer(request.form)
+	return render_template('new.html', form=form)
 
 @app.route("/players/<int:id>", methods =["GET", "PATCH", "DELETE"])
 def show(id):

@@ -7,7 +7,7 @@
 	
 	{% for player in all_players %}
 		<h5>{{player.first_name}} {{player.last_name}} </h5>
-		<p></p><a href="{{url_for('edit',id = player.id)}}">Edit player</a> <a href="{{url_for('show', id = player.id)}}">View player</a></p>
+		<p></p><a href="{{url_for('edit',id = player.id)}}">Edit player</a> | <a href="{{url_for('show', id = player.id)}}">View player</a></p>
 	{% endfor %}
 	<a href="{{url_for('new')}}" class="btn btn-primary btn-md">Add a new player</a>
 	
