@@ -6,6 +6,11 @@
 		<hr>
 		<p><strong>Name:</strong> {{player.first_name}} {{player.last_name}} </p>
 		<p><strong>Position:</strong> {{player.position}}</p>
+		<form action="{{url_for('new_trait', id = player.id)}}" >
+			<input type="submit" class="btn btn-primary" value="Add a trait">
+
+		</form>
+		
 
 
 

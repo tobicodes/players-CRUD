@@ -2,10 +2,11 @@
 {% block content %}
 
 	<div class="text-center">
-		<h5> {{player.first_name}} {{player.last_name}} has the following traits:</h5>
+		<h3> {{player.first_name}} {{player.last_name}} has the following traits:</h3>
+		<hr>
 
 		{% for trait in player.traits %}
-		<p> {{trait.content}}</p>
+		<p> {{trait.content}} <a href="{{url_for('edit_trait', player_id = trait.player_id, id = trait.id)}}">Edit trait</a> </p> 
 		{% endfor %}
 
 

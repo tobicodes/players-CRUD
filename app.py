@@ -110,7 +110,7 @@ def new_trait(id):
 def show_trait(player_id, id):
 	trait = Trait.query.get(id)
 	if request.method == b"PATCH":
-		trait.content = request.form['updated_trait']
+		trait.content = request.form['edited_trait']
 		db.session.add(trait)
 		db.session.commit()
 		return redirect(url_for('traits_index', id = player_id))

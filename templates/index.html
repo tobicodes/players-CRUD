@@ -6,10 +6,10 @@
 	<h3 class="index_header">Proponents of <a href="https://www.youtube.com/watch?v=Xbl6PL3dgmE">Joga Bonito</a>:</h3>
 	
 	{% for player in all_players %}
-		<p>{{player.first_name}} {{player.last_name}} </p>
+		<h5>{{player.first_name}} {{player.last_name}} </h5>
 		<p></p><a href="{{url_for('edit',id = player.id)}}">Edit player</a> <a href="{{url_for('show', id = player.id)}}">View player</a></p>
 	{% endfor %}
-	<a href="{{url_for('new')}}" class="btn btn-primary btn-md">Add a new baller</a>
+	<a href="{{url_for('new')}}" class="btn btn-primary btn-md">Add a new player</a>
 	
 
 	
