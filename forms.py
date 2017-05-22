@@ -16,3 +16,4 @@ class Addnewtrait(FlaskForm):
 
 class Edittrait(FlaskForm):
 	trait = StringField("Edit his trait",[validators.Length(min=1)])
+
