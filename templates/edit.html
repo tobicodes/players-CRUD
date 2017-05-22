@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="text-center">
+
+		<h4>Let's update that player</h4>
+		<br>
+
+		<form action="{{url_for('show',id=player.id)}}?_method=PATCH" method="POST">
+			<label for="first_name">First name</label>
+			<input type="text" name="first_name" value={{player.first_name}}> 
+
+			<label for="last">Last name</label>
+			<input type="text" name="last_name" value="{{player.last_name}}">
+
+			<label for="position">Position</label>
+			<input type="text" name="position" value="{{player.position}}">
+			<br>
+
+			<input type="submit" class= "btn btn-warning" value="Edit player">
+
+		</form>
+		<form action="{{url_for('show', id = player.id)}}?_method=DELETE" method="POST">
+			<input type="submit" class="btn btn-danger" value="Delete player8">
+
+		</form>
+
+	</div>
+
+
+{% endblock %}

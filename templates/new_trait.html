@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<div class="text-center">
+		<h5>Add a trait for {{player.first_name}} {{player.last_name}}</h5>
+		<hr>
+		<form action="{{url_for('traits_index', id = player.id)}}" method="POST">
+			
+				<label for="new_trait">What's unique about this player?</label>
+				<input type="text" name="new_trait">
+			
+			<input type="submit" class="btn btn-primary" value="Add trait">
+		</form>
+		<br>
+		<p>Not sure? Click me to find a <a href="https://www.youtube.com/results?search_query={{player.first_name}}+{{player.last_name}}">YouTube video</a> of {{player.first_name}} {{player.last_name}}</p>
+
+
+	</div>
+{% endblock %}
